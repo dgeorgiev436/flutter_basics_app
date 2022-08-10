@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       appBar: AppBar(
         title: Text("My First App"),
       ),
-      body: Text("This is my default body text!"),
+      body: Text("This is my default body texts!"),
     ));
   }
 }
