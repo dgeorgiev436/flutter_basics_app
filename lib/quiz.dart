@@ -18,9 +18,9 @@ class Quiz extends StatelessWidget {
               children: [
                 Question(questions[questionIndex]["questionText"]),
                 // Spread operator is used to ensure we have only one list of items
-                ...(questions[questionIndex]["answers"] as List<String>)
+                ...(questions[questionIndex]["answers"] as List<Map<String, Object>>)
                     .map((answer) {
-                  return Answer(answerQuestion, answer);
+                  return Answer(() => answerQuestion(answer["score"]), answer["text"]);
                 }).toList() // returns a list
               ],
             );

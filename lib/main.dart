@@ -21,23 +21,49 @@ class _MyAppState extends State<MyApp> {
   final _questions = const [
     {
       "questionText": 'What\'s your favorite color?',
-      "answers": ["Black", "Red", "Green", "White"],
+      "answers": [
+        {"text": "Black", "score": 10},
+        {"text": "Red", "score": 5},
+        {"text": "Green", "score": 3},
+        {"text": "White", "score": 1}
+      ],
     },
     {
       "questionText": 'What\'s your favorite animal',
-      "answers": ["Bear", "Cat", "Dog", "Spider"],
+      "answers": [
+        {"text": "Bear", "score": 8},
+        {"text": "Cat", "score": 2},
+        {"text": "Dog", "score": 1},
+        {"text": "Spider", "score": 10}
+      ],
     },
     {
       "questionText": 'who\'s your favorite city',
-      "answers": ["London", "Amsterdam", "Paris", "New York"],
+      "answers": [
+        {"text": "London", "score": 5},
+        {"text": "Amsterdam", "score": 4},
+        {"text": "Paris", "score": 3},
+        {"text": "New York", "score": 7}
+      ],
     },
   ];
 
   var _questionIndex = 0;
+  var _totalScore = 0;
 
-  void _answerQuestion() {
-    // setState function tells flutter to change the state of the app
+  void _resetQuiz() {
+
     setState(() {
+      _questionIndex = 0;
+      _totalScore = 0;
+    });
+  
+  }
+
+  void _answerQuestion(int score) {
+    _totalScore += score;
+    setState(() {
+      // setState function tells flutter to change the state of the app
       _questionIndex = _questionIndex + 1;
     });
 
@@ -56,7 +82,7 @@ class _MyAppState extends State<MyApp> {
               answerQuestion: _answerQuestion,
               questions: _questions,
               questionIndex: _questionIndex)
-          : Result(),
+          : Result(_totalScore, _resetQuiz),
     ));
   }
 }
