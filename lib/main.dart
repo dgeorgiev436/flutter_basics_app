@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 import "./question.dart";
 import "./answer.dart";
 
@@ -9,7 +8,6 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
-
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -25,7 +23,6 @@ class _MyAppState extends State<MyApp> {
   void _answerQuestion() {
     // setState function tells flutter to change the state of the app
     setState(() {
-
       _questionIndex = _questionIndex + 1;
     });
     print(_questionIndex);
@@ -33,10 +30,23 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    // Dart Map
     var questions = [
-      'What\'s your favorite color?',
-      'What\'s your favorite animal'
+      {
+        "questionText": 'What\'s your favorite color?',
+        "answers": ["Black", "Red", "Green", "White"],
+      },
+      {
+        "questionText": 'What\'s your favorite animal',
+        "answers": ["Bear", "Cat", "Dog", "Spider"],
+      },
+      {
+        "questionText": 'who\'s your favorite city',
+        "answers": ["London", "Amsterdam", "Paris", "New York"],
+      },
     ];
+
+    
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
