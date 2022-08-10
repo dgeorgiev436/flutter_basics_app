@@ -64,7 +64,7 @@ class _MyAppState extends State<MyApp> {
     _totalScore += score;
     setState(() {
       // setState function tells flutter to change the state of the app
-      _questionIndex = _questionIndex + 1;
+      _questionIndex = _questionIndex + ;
     });
 
     print(_questionIndex);
