@@ -4,8 +4,27 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
 
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return MyAppState();
+  }
+}
+
+// State of generic type, Tells that MyAppState belongs to MyApp
+class MyAppState extends State<MyApp> {
+  var questionIndex = 0;
+
+  void answerQuestion() {
+    // setState function tells flutter to change the state of the app
+    setState(() {
+
+      questionIndex = questionIndex + 1;
+    });
+    print(questionIndex);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +39,10 @@ class MyApp extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Text("The question!"),
-          RaisedButton(child: Text("Answer 1"), onPressed: null),
-          RaisedButton(child: Text("Answer 2"), onPressed: null),
-          RaisedButton(child: Text("Answer 3"), onPressed: null),
+          Text(questions[questionIndex]),
+          RaisedButton(child: Text("Answer 1"), onPressed: answerQuestion),
+          RaisedButton(child: Text("Answer 2"), onPressed: answerQuestion),
+          RaisedButton(child: Text("Answer 3"), onPressed: answerQuestion),
         ],
       ),
     ));
